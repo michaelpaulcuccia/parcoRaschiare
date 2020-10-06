@@ -8,6 +8,12 @@
 <body>
     <div>{{ response_data }}</div>
 
-    <p>Return to previous page: <a href="/" target="_blank">Home</a></p>
+    <p>Return to previous page: <a href="/" target="_blank" onclick="closeWin()">Home</a></p>
+
+    <script>
+        function closeWin(){
+            window.close()
+        }
+    </script>    
 </body>
 </html>
