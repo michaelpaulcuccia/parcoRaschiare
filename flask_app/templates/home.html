@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>flask_app</title>
+  </head>
+  <body>
+
+
+    <div class="container">
+      
+      <form action="/submit" method="POST">
+
+        <div>
+            <h3>Welcome to Park Selection!</h3>
+         
+            <label for="park_selection">Please Choose a Park:</label>
+            <select name="park_choice"">
+                <option name='park_choice' value="badl">Badlands</option>
+                <option name='park_choice' value="dewa">Delaware Water Gap</option>
+                <option name='park_choice' value="moru">Mount Rushmore</option>
+                <option name='park_choice' value="wica">Wind Cave</option>
+                <option name='park_choice' value="yose">Yosemite</option>
+              </select>
+              <input type="submit" value="Submit" class="btn" />
+          </div>
+   
+        
+      </form>
+
+    </div>
+
+  </body>
+</html>
