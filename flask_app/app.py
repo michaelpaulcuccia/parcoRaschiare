@@ -27,12 +27,36 @@ def submit():
         soup = bs4.BeautifulSoup(res.text, 'html.parser')
 
         #ParkFooter-contact
+        '''
         park_footer = soup.find('div', class_ = 'ParkFooter-contact')
         print('Scrape: ' + str(park_footer))
+        '''
 
-        #stringify repsonse
-        response_string = str(park_footer)  
+        #street address
+        street_address = soup.find('span', class_ = 'street-address')
+        street_address_text = street_address.get_text()
+
+        #state
+        state_abrv = soup.find('span', class_ = 'region')
+        state_text = state_abrv.get_text()
+
+        #zip
+        zip_code = soup.find('span', class_ = 'postal-code')
+        zip_code_text = zip_code.get_text()
+
+        #phone
+        phone = soup.find('span', class_ = 'tel')
+        phone_text = phone.get_text()
+
+        park_address = {
+            'address': street_address_text,
+            'state': state_text,
+            'zipCode': zip_code_text,
+            'phone': phone_text
+        }
         
+        response_string = park_address['address'] + ', ' + park_address['state'] + ', ' + park_address['zipCode'] + ' phone: ' + park_address['phone'] 
+
         return render_template('success.html', response_data=response_string)
 
     else:
