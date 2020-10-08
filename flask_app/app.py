@@ -93,9 +93,12 @@ def submit():
         #message for success page containing all fields
         response_string = park_address['title'] + ' Address: ' + park_address['address'] + ', ' + park_address['state'] + ', ' + park_address['zipCode'] + ' phone: ' + park_address['phone']
 
+        #post to Postgresql
+        '''
         payload = ParkContactData(title_text, street_address_text, state_text, zip_code_text, phone_text)
         db.session.add(payload)
         db.session.commit()
+        '''
         
         #success page and message
         return render_template('success.html', response_data=response_string)   
