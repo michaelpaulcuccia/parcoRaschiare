@@ -8,12 +8,13 @@ app = Flask(__name__)
 #environment
 ENV = 'dev'
 
-if ENV == 'dev':
+if ENV == 'prod':
     app.debug = True
     #database
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:182201xx!@localhost/nps_scrape'
 else:
     app.debug = False 
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://mvyvgjzdjmkeop:6b71a50c50bc07fd20aff3785aa7ca2bee7db492dbc715c54b798e431c393421@ec2-54-160-18-230.compute-1.amazonaws.com:5432/d8df7qrs4fobtb'
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -94,11 +95,9 @@ def submit():
         response_string = park_address['title'] + ' Address: ' + park_address['address'] + ', ' + park_address['state'] + ', ' + park_address['zipCode'] + ' phone: ' + park_address['phone']
 
         #post to Postgresql
-        '''
         payload = ParkContactData(title_text, street_address_text, state_text, zip_code_text, phone_text)
         db.session.add(payload)
         db.session.commit()
-        '''
         
         #success page and message
         return render_template('success.html', response_data=response_string)   
